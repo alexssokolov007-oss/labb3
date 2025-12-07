@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=45.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lab3"
+version = "1.0.0"
+dependencies = [
+    "colorama>=0.4.6",
+    "pytest>=7.0.0"
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = [
+    "--verbose",
+    "--tb=short",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
