@@ -56,21 +56,18 @@ class TestSorting:
         assert radix_sort(arr, 16) == sorted(arr)
 
     def test_bucket_sort(self):
-        float_arrays = {
-            'simple': [0.1, 0.3, 0.2],
-            'duplicates': [0.5, 0.5, 0.1, 0.1],
-            'edges': [0.0, 1.0, 0.5]
+        arrays = {
+            'simple_float': [0.1, 0.3, 0.2],
+            'duplicates_float': [0.5, 0.5, 0.1, 0.1],
+            'edges_float': [0.0, 1.0, 0.5],
+            'wide_float_range': [-0.2, 1.5, 0.0, 3.3],
+            'mixed_numbers': [5, 1.2, 3.3, -0.5, 2],
+            'integer_range': [10, -5, 3, 2, 100, 0],
         }
         
-        for name, arr in float_arrays.items():
+        for name, arr in arrays.items():
             result = bucket_sort(arr)
             assert result == sorted(arr), f'Failed on {name}'
-
-    def test_bucket_sort_invalid_range(self):
-        with pytest.raises(ValueError):
-            bucket_sort([-0.1, 0.5])
-        with pytest.raises(ValueError):
-            bucket_sort([0.5, 1.1])
 
     def test_heap_sort(self):
         for name, arr in self.test_arrays.items():
